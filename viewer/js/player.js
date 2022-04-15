@@ -13,7 +13,7 @@ function onYouTubeIframeAPIReady() {
   vidPlayer = new YT.Player('video');
 }
 
-fetch('/node-server/games', {method: 'GET'})
+fetch('../../node-server/games/index.json', {method: 'GET'})
   .then(function(response) {
     return response.json();
   }).then(function(games) {
@@ -27,12 +27,12 @@ fetch('/node-server/games', {method: 'GET'})
     }
   })
   .catch(function(err) {
-    catchNodeError();
+	catchNodeError(err);
   });
 
 var offsets = [];
 
-fetch('/node-server/pitches', {method: 'GET'})
+fetch('../../node-server/pitches/index.json', {method: 'GET'})
   .then(function(response) {
     return response.json();
   })
@@ -41,7 +41,7 @@ fetch('/node-server/pitches', {method: 'GET'})
     offsets = pitches[gameID]['videos'][etag]['offsets'];
   })
   .catch(function(err) {
-    catchNodeError();
+    catchNodeError(err);
   });
 
 var currentPitch = 1;

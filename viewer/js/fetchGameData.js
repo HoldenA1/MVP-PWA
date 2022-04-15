@@ -1,6 +1,6 @@
 var gameID = getUrlVars()["id"];
 
-fetch('/node-server/games', {method: 'GET'})
+fetch('../../node-server/games/index.json', {method: 'GET'})
   .then(function(response) {
     return response.json();
   }).then(function(games) {
@@ -19,5 +19,5 @@ fetch('/node-server/games', {method: 'GET'})
     }
   })
   .catch(function(err) {
-    catchNodeError();
+    catchNodeError(err);
   });

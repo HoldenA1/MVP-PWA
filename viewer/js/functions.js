@@ -11,9 +11,9 @@ function setPageTitle(name) {
   var head = document.querySelector(".header");
   var h1 = document.createElement("h1");
   var a = document.createElement("a");
-  a.setAttribute("href", "/viewer");
+  a.setAttribute("href", "/MVP-PWA/viewer");
   var img = document.createElement("img");
-  img.setAttribute("src", "/viewer/images/icons/favicon-96x96.png");
+  img.setAttribute("src", "/MVP-PWA/viewer/images/icons/favicon-96x96.png");
   var title = document.createTextNode(name);
   a.appendChild(img);
   h1.appendChild(a);
@@ -46,7 +46,8 @@ function setThumbnails(videoName, etag, gameID) {
   document.querySelector('.thumbnails').appendChild(container);
 }
 
-function catchNodeError() {
+function catchNodeError(err) {
+  console.log(err);
   setPageTitle("Sorry, something wen't wrong.");
   var error = document.createElement("h2");
   error.innerHTML = "There was a problem connecting to the database. Plase try again later."

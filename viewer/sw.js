@@ -1,18 +1,18 @@
 var cacheName = 'mvp-pwa';
 var databaseName = 'mvp-game-data'
 var filesToCache = [
-  '/viewer/',
-  '/viewer/index.html',
-  '/viewer/favicon.ico',
-  '/viewer/manifest.json',
-  '/viewer/images/icons/favicon-96x96.png',
-  '/viewer/css/style.css',
-  '/viewer/offline.html',
-  '/viewer/images/offline.png',
-  '/node-server/games',
-  '/node-server/pitches'
+  '.',
+  './index.html',
+  './favicon.ico',
+  './manifest.json',
+  './images/icons/favicon-96x96.png',
+  './css/style.css',
+  './offline.html',
+  './images/offline.png',
+  '../node-server/games',
+  '../node-server/pitches'
 ];
-
+console.log("now we tesst");
 // Start the service worker and cache all of the app's content
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -32,7 +32,7 @@ self.addEventListener('fetch', function(event) {
     }).catch(function() {
       // If both fail, show a generic fallback
       return caches.open(cacheName).then((cache) => {
-        return cache.match('/viewer/offline.html');
+        return cache.match('./offline.html');
       });
     })
   );
